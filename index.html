@@ -600,45 +600,147 @@
     }
 
     /* ---------- PROJECTS ---------- */
+    .proj-filters {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 38px;
+    }
+
+    .filter-btn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: rgba(43, 36, 56, 0.6);
+      color: var(--text-light-dim);
+      border: 1px solid rgba(246, 241, 231, 0.1);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .filter-btn:hover {
+      color: var(--text-light);
+      border-color: rgba(246, 241, 231, 0.25);
+      background: rgba(53, 44, 67, 0.8);
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, #d946ef 0%, #8b5cf6 100%);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 0 16px rgba(217, 70, 239, 0.35);
+      font-weight: 600;
+    }
+
     .proj-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 2px;
-      background: var(--line-dark);
-      border: 1px solid var(--line-dark);
+      gap: 26px;
     }
 
-    @media (max-width:760px) {
+    @media (max-width:820px) {
       .proj-grid {
         grid-template-columns: 1fr;
       }
     }
 
     .proj-card {
-      background: var(--ink);
+      background: linear-gradient(180deg, rgba(43, 34, 58, 0.85) 0%, rgba(32, 26, 43, 0.95) 100%);
+      border: 1px solid rgba(246, 241, 231, 0.1);
+      border-radius: 20px;
+      padding: 24px;
       display: flex;
       flex-direction: column;
-      border-top: 3px solid var(--marigold);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .proj-card:nth-child(3n+2) {
-      border-top-color: var(--coral);
+    .proj-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(242, 169, 59, 0.35);
+      box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.5), 0 0 24px -6px rgba(242, 169, 59, 0.15);
     }
 
-    .proj-card:nth-child(3n+3) {
-      border-top-color: var(--mint);
+    .proj-card:nth-child(2):hover,
+    .proj-card:nth-child(5):hover {
+      border-color: rgba(240, 86, 92, 0.35);
+      box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.5), 0 0 24px -6px rgba(240, 86, 92, 0.15);
     }
 
+    .proj-card:nth-child(3):hover,
+    .proj-card:nth-child(6):hover {
+      border-color: rgba(63, 217, 184, 0.35);
+      box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.5), 0 0 24px -6px rgba(63, 217, 184, 0.15);
+    }
+
+    /* Card Header */
+    .proj-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .proj-number {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+      letter-spacing: 1.5px;
+      color: var(--text-light-dim);
+      text-transform: uppercase;
+    }
+
+    .proj-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--marigold);
+      box-shadow: 0 0 8px var(--marigold);
+    }
+
+    .proj-card:nth-child(2) .proj-dot,
+    .proj-card:nth-child(5) .proj-dot {
+      background: var(--coral);
+      box-shadow: 0 0 8px var(--coral);
+    }
+
+    .proj-card:nth-child(3) .proj-dot,
+    .proj-card:nth-child(6) .proj-dot {
+      background: var(--mint);
+      box-shadow: 0 0 8px var(--mint);
+    }
+
+    .proj-category {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: rgba(246, 241, 231, 0.06);
+      border: 1px solid rgba(246, 241, 231, 0.12);
+      color: var(--text-light-dim);
+      letter-spacing: 0.5px;
+    }
+
+    /* Image Showcase */
     .proj-image {
       position: relative;
       aspect-ratio: 16/9;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background-color: var(--ink-3);
+      border-radius: 12px;
       overflow: hidden;
-      border-bottom: 1px solid var(--line-dark);
+      background: #171220;
+      border: 1px solid rgba(246, 241, 231, 0.1);
+      margin-bottom: 20px;
     }
 
     .proj-image img {
@@ -654,85 +756,128 @@
       transform: scale(1.03);
     }
 
-    .proj-image .badge {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
+    .proj-ss-badge {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      background: rgba(246, 241, 231, 0.08);
-    }
-
-    .proj-image .badge svg {
-      width: 26px;
-      height: 26px;
-    }
-
-    .proj-card:nth-child(3n+1) .badge {
-      color: var(--marigold);
-    }
-
-    .proj-card:nth-child(3n+2) .badge {
-      color: var(--coral);
-    }
-
-    .proj-card:nth-child(3n+3) .badge {
-      color: var(--mint);
-    }
-
-    .proj-image .img-label {
+      gap: 6px;
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 11.5px;
-      color: var(--text-light-dim);
-      opacity: .7;
+      font-size: 10.5px;
+      letter-spacing: 0.8px;
+      color: var(--text-light);
+      background: rgba(20, 15, 27, 0.82);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 6px;
+      padding: 3px 8px;
     }
 
+    .proj-ss-badge svg {
+      width: 13px;
+      height: 13px;
+      opacity: 0.85;
+    }
+
+    /* Card Body */
     .proj-body {
-      padding: 26px 32px 32px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
       flex-grow: 1;
+      padding: 0;
+    }
+
+    .proj-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
     .proj-title {
-      font-size: 19px;
-      font-weight: 600;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-light);
+      letter-spacing: -0.2px;
+    }
+
+    .proj-subtitle {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
+      color: var(--marigold);
+      font-weight: 500;
+    }
+
+    .proj-card:nth-child(2) .proj-subtitle,
+    .proj-card:nth-child(5) .proj-subtitle {
+      color: var(--coral);
+    }
+
+    .proj-card:nth-child(3) .proj-subtitle,
+    .proj-card:nth-child(6) .proj-subtitle {
+      color: var(--mint);
     }
 
     .proj-desc {
-      font-size: 14.5px;
-      line-height: 1.65;
+      font-size: 14px;
+      line-height: 1.6;
       color: var(--text-light-dim);
-      flex-grow: 1;
+      margin: 0;
     }
 
-    .proj-tech {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 12px;
-      color: var(--text-light-dim);
-      opacity: .8;
+    /* Feature Highlights */
+    .proj-features {
+      list-style: none;
+      padding: 0;
+      margin: 4px 0 8px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
     }
 
-    .proj-link {
-      display: inline-flex;
+    .proj-features li {
+      font-size: 13px;
+      color: var(--text-light);
+      display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--mint);
-      margin-top: 6px;
+      line-height: 1.4;
     }
 
-    .proj-link svg {
-      width: 16px;
-      height: 16px;
+    .proj-features li .feat-icon {
+      color: var(--marigold);
+      font-size: 12px;
       flex-shrink: 0;
     }
 
-    .proj-link:hover {
-      color: var(--marigold);
+    .proj-card:nth-child(2) .proj-features li .feat-icon,
+    .proj-card:nth-child(5) .proj-features li .feat-icon {
+      color: var(--coral);
+    }
+
+    .proj-card:nth-child(3) .proj-features li .feat-icon,
+    .proj-card:nth-child(6) .proj-features li .feat-icon {
+      color: var(--mint);
+    }
+
+    /* Tech Tags */
+    .proj-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 10px;
+    }
+
+    .proj-tag-pill {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--text-light-dim);
+      background: rgba(246, 241, 231, 0.05);
+      border: 1px solid rgba(246, 241, 231, 0.1);
+      border-radius: 6px;
+      padding: 3px 9px;
     }
 
     /* ---------- EDUCATION ---------- */
@@ -1145,129 +1290,248 @@
       <div class="sec-head"><span class="sec-num mono">05</span>
         <h2 class="sec-title">Projects</h2>
       </div>
+
+      <div class="proj-filters">
+        <button class="filter-btn active" data-filter="all">ALL SYSTEMS</button>
+        <button class="filter-btn" data-filter="rag">Generative AI &amp; RAG</button>
+        <button class="filter-btn" data-filter="ml">Machine Learning</button>
+        <button class="filter-btn" data-filter="nlp">NLP &amp; Transformers</button>
+      </div>
+
       <div class="proj-grid">
 
-        <div class="proj-card">
+        <!-- PROJECT 01: MedSeek -->
+        <a class="proj-card" href="https://github.com/MedInfant-RAG/MedSeek-Infant-HealthAssistant" target="_blank" rel="noopener" data-category="rag">
+          <div class="proj-card-header">
+            <div class="proj-number"><span class="proj-dot"></span> PROJECT 01</div>
+            <span class="proj-category">Generative AI &amp; RAG</span>
+          </div>
           <div class="proj-image">
             <img src="project ss/medseek.png" alt="MedSeek — Pediatric &amp; Neonatal Health RAG Assistant"
               loading="lazy" />
+            <span class="proj-ss-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="m21 15-5-5L5 21" />
+              </svg>
+              1 SCREENSHOT
+            </span>
           </div>
           <div class="proj-body">
-            <div class="proj-title">MedSeek — Pediatric &amp; Neonatal Health RAG Assistant</div>
-            <div class="proj-desc">Multilingual (100+ languages) RAG system for pediatric and neonatal health, deployed
-              as a Telegram bot with voice and image input. Built dual response personas: first-aid guidance for
-              parents, detailed clinical answers for doctors. Built for the Orange | Instant AI Hackathon.</div>
-            <div class="proj-tech">Python · RAG · Qdrant · BGE-m3 · GPT-4o-mini · Telegram Bot API</div>
-            <a class="proj-link" href="https://github.com/MedInfant-RAG/MedSeek-Infant-HealthAssistant" target="_blank"
-              rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 .5C5.73.5.98 5.24.98 11.5c0 5 3.24 9.24 7.75 10.74.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.15.68-3.82-1.34-3.82-1.34-.52-1.3-1.26-1.65-1.26-1.65-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.73 2.65 1.23 3.3.94.1-.73.4-1.23.72-1.51-2.51-.28-5.15-1.26-5.15-5.6 0-1.24.44-2.25 1.17-3.04-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.16a10.9 10.9 0 0 1 5.74 0c2.18-1.47 3.14-1.16 3.14-1.16.63 1.57.24 2.73.12 3.02.73.79 1.17 1.8 1.17 3.04 0 4.35-2.65 5.31-5.17 5.59.41.35.77 1.04.77 2.1 0 1.52-.01 2.75-.01 3.12 0 .3.2.66.79.55A10.52 10.52 0 0 0 23 11.5C23 5.24 18.27.5 12 .5Z" />
-              </svg>
-              View on GitHub
-            </a>
+            <div class="proj-title-group">
+              <div class="proj-title">MedSeek</div>
+              <div class="proj-subtitle">Pediatric &amp; Neonatal Health RAG Assistant</div>
+            </div>
+            <p class="proj-desc">Evidence-based multilingual RAG system for pediatric and neonatal health deployed as a Telegram bot with voice, image, and text input. Built for the Orange | Instant AI Hackathon.</p>
+            <ul class="proj-features">
+              <li><span class="feat-icon">✦</span> Multimodal Voice, Image &amp; Text Input</li>
+              <li><span class="feat-icon">✦</span> Dual Personas (Parents Guidance &amp; Doctors)</li>
+              <li><span class="feat-icon">✦</span> Multilingual Qdrant Vector Retrieval (100+ langs)</li>
+            </ul>
+            <div class="proj-tags">
+              <span class="proj-tag-pill">'Python'</span>
+              <span class="proj-tag-pill">'RAG'</span>
+              <span class="proj-tag-pill">'Qdrant'</span>
+              <span class="proj-tag-pill">'BGE-m3'</span>
+              <span class="proj-tag-pill">'GPT-4o-mini'</span>
+              <span class="proj-tag-pill">'Telegram Bot'</span>
+            </div>
           </div>
-        </div>
+        </a>
 
-        <div class="proj-card">
+        <!-- PROJECT 02: Inventory Intelligence -->
+        <a class="proj-card" href="https://github.com/nrshousha/text-to-sql" target="_blank" rel="noopener" data-category="rag">
+          <div class="proj-card-header">
+            <div class="proj-number"><span class="proj-dot"></span> PROJECT 02</div>
+            <span class="proj-category">Text-to-SQL &amp; LLMs</span>
+          </div>
           <div class="proj-image">
             <img src="project ss/Inventory Intelligence.png" alt="Inventory Intelligence — Text-to-SQL Assistant"
               loading="lazy" />
+            <span class="proj-ss-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="m21 15-5-5L5 21" />
+              </svg>
+              1 SCREENSHOT
+            </span>
           </div>
           <div class="proj-body">
-            <div class="proj-title">Inventory Intelligence — Text-to-SQL System</div>
-            <div class="proj-desc">End-to-end natural language to SQL query engine for warehouse and inventory
-              intelligence. Features automated PostgreSQL schema translation, strict DDL safety guards, interactive
-              write confirmation workflows, and real-time database analytics.</div>
-            <div class="proj-tech">Python · FastAPI · PostgreSQL · OpenAI API · Docker · SQL</div>
-            <a class="proj-link" href="https://github.com/nrshousha/text-to-sql" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 .5C5.73.5.98 5.24.98 11.5c0 5 3.24 9.24 7.75 10.74.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.15.68-3.82-1.34-3.82-1.34-.52-1.3-1.26-1.65-1.26-1.65-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.73 2.65 1.23 3.3.94.1-.73.4-1.23.72-1.51-2.51-.28-5.15-1.26-5.15-5.6 0-1.24.44-2.25 1.17-3.04-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.16a10.9 10.9 0 0 1 5.74 0c2.18-1.47 3.14-1.16 3.14-1.16.63 1.57.24 2.73.12 3.02.73.79 1.17 1.8 1.17 3.04 0 4.35-2.65 5.31-5.17 5.59.41.35.77 1.04.77 2.1 0 1.52-.01 2.75-.01 3.12 0 .3.2.66.79.55A10.52 10.52 0 0 0 23 11.5C23 5.24 18.27.5 12 .5Z" />
-              </svg>
-              View on GitHub
-            </a>
+            <div class="proj-title-group">
+              <div class="proj-title">Inventory Intelligence</div>
+              <div class="proj-subtitle">Natural Language to SQL Query Engine</div>
+            </div>
+            <p class="proj-desc">End-to-end natural language to SQL query engine for warehouse and inventory intelligence. Features automated PostgreSQL schema translation, strict DDL safety guards, and write-confirmation workflows.</p>
+            <ul class="proj-features">
+              <li><span class="feat-icon">✦</span> Automated PostgreSQL Schema Context Translation</li>
+              <li><span class="feat-icon">✦</span> Strict DDL Safety &amp; Malicious Query Guardrails</li>
+              <li><span class="feat-icon">✦</span> Interactive DML Write Confirmation Flow</li>
+            </ul>
+            <div class="proj-tags">
+              <span class="proj-tag-pill">'Python'</span>
+              <span class="proj-tag-pill">'FastAPI'</span>
+              <span class="proj-tag-pill">'PostgreSQL'</span>
+              <span class="proj-tag-pill">'OpenAI API'</span>
+              <span class="proj-tag-pill">'Docker'</span>
+              <span class="proj-tag-pill">'SQL'</span>
+            </div>
           </div>
-        </div>
+        </a>
 
-        <div class="proj-card">
-          <div class="proj-image">
-            <img src="project ss/brain tumor detection.png" alt="Brain Tumor Prediction System" loading="lazy" />
+        <!-- PROJECT 03: Egypt Law RAG -->
+        <a class="proj-card" href="https://github.com/the-ever-shining-Manal/egypt-law-rag" target="_blank" rel="noopener" data-category="rag">
+          <div class="proj-card-header">
+            <div class="proj-number"><span class="proj-dot"></span> PROJECT 03</div>
+            <span class="proj-category">Generative AI &amp; RAG</span>
           </div>
-          <div class="proj-body">
-            <div class="proj-title">Brain Tumor Prediction System</div>
-            <div class="proj-desc">ML model to classify brain tumors from medical data with high accuracy, covering the
-              full pipeline from preprocessing to evaluation.</div>
-            <div class="proj-tech">Python · TensorFlow · Scikit-learn · Pandas</div>
-            <a class="proj-link" href="https://github.com/mo-elgazar74/Brain-Tumor-Classification-and-Care"
-              target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 .5C5.73.5.98 5.24.98 11.5c0 5 3.24 9.24 7.75 10.74.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.15.68-3.82-1.34-3.82-1.34-.52-1.3-1.26-1.65-1.26-1.65-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.73 2.65 1.23 3.3.94.1-.73.4-1.23.72-1.51-2.51-.28-5.15-1.26-5.15-5.6 0-1.24.44-2.25 1.17-3.04-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.16a10.9 10.9 0 0 1 5.74 0c2.18-1.47 3.14-1.16 3.14-1.16.63 1.57.24 2.73.12 3.02.73.79 1.17 1.8 1.17 3.04 0 4.35-2.65 5.31-5.17 5.59.41.35.77 1.04.77 2.1 0 1.52-.01 2.75-.01 3.12 0 .3.2.66.79.55A10.52 10.52 0 0 0 23 11.5C23 5.24 18.27.5 12 .5Z" />
-              </svg>
-              View on GitHub
-            </a>
-          </div>
-        </div>
-
-        <div class="proj-card">
           <div class="proj-image">
             <img src="project ss/law rag.png" alt="Egypt Law RAG — Arabic Legal Q&amp;A System" loading="lazy" />
+            <span class="proj-ss-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="m21 15-5-5L5 21" />
+              </svg>
+              1 SCREENSHOT
+            </span>
           </div>
           <div class="proj-body">
-            <div class="proj-title">Egypt Law RAG — Arabic Legal Q&amp;A System</div>
-            <div class="proj-desc">Dockerized RAG system answering questions on the Egyptian Penal Code using a Qdrant
-              vector database. Built and integrated the core AI pipeline end-to-end and owned automation and
-              orchestration on a multi-person team.</div>
-            <div class="proj-tech">Python · Docker · Qdrant · RAG · NLP</div>
-            <a class="proj-link" href="https://github.com/the-ever-shining-Manal/egypt-law-rag" target="_blank"
-              rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 .5C5.73.5.98 5.24.98 11.5c0 5 3.24 9.24 7.75 10.74.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.15.68-3.82-1.34-3.82-1.34-.52-1.3-1.26-1.65-1.26-1.65-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.73 2.65 1.23 3.3.94.1-.73.4-1.23.72-1.51-2.51-.28-5.15-1.26-5.15-5.6 0-1.24.44-2.25 1.17-3.04-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.16a10.9 10.9 0 0 1 5.74 0c2.18-1.47 3.14-1.16 3.14-1.16.63 1.57.24 2.73.12 3.02.73.79 1.17 1.8 1.17 3.04 0 4.35-2.65 5.31-5.17 5.59.41.35.77 1.04.77 2.1 0 1.52-.01 2.75-.01 3.12 0 .3.2.66.79.55A10.52 10.52 0 0 0 23 11.5C23 5.24 18.27.5 12 .5Z" />
-              </svg>
-              View on GitHub
-            </a>
+            <div class="proj-title-group">
+              <div class="proj-title">Egypt Law RAG</div>
+              <div class="proj-subtitle">Arabic Legal Q&amp;A System</div>
+            </div>
+            <p class="proj-desc">Dockerized RAG system answering queries on the Egyptian Penal Code using Qdrant vector database. Built core AI pipeline and owned orchestration on a multi-person team.</p>
+            <ul class="proj-features">
+              <li><span class="feat-icon">✦</span> Egyptian Penal Code Vector Q&amp;A</li>
+              <li><span class="feat-icon">✦</span> Dense Semantic Retrieval &amp; Document Chunking</li>
+              <li><span class="feat-icon">✦</span> Fully Dockerized End-to-End AI Pipeline</li>
+            </ul>
+            <div class="proj-tags">
+              <span class="proj-tag-pill">'Python'</span>
+              <span class="proj-tag-pill">'Docker'</span>
+              <span class="proj-tag-pill">'Qdrant'</span>
+              <span class="proj-tag-pill">'RAG'</span>
+              <span class="proj-tag-pill">'NLP'</span>
+              <span class="proj-tag-pill">'FastAPI'</span>
+            </div>
           </div>
-        </div>
+        </a>
 
-        <div class="proj-card">
+        <!-- PROJECT 04: Brain Tumor Prediction -->
+        <a class="proj-card" href="https://github.com/mo-elgazar74/Brain-Tumor-Classification-and-Care" target="_blank" rel="noopener" data-category="ml">
+          <div class="proj-card-header">
+            <div class="proj-number"><span class="proj-dot"></span> PROJECT 04</div>
+            <span class="proj-category">Computer Vision &amp; ML</span>
+          </div>
           <div class="proj-image">
-            <img src="project ss/read next.png" alt="ReadNext — Book Recommendation System" loading="lazy" />
+            <img src="project ss/brain tumor detection.png" alt="Brain Tumor Prediction System" loading="lazy" />
+            <span class="proj-ss-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="m21 15-5-5L5 21" />
+              </svg>
+              1 SCREENSHOT
+            </span>
           </div>
           <div class="proj-body">
-            <div class="proj-title">ReadNext — Book Recommendation System</div>
-            <div class="proj-desc">Content-based book recommendation engine that suggests titles based on a user's
-              reading history and preferences.</div>
-            <div class="proj-tech">Python · Scikit-learn · Pandas · ML</div>
-            <a class="proj-link" href="https://github.com/nrshousha/ReadNext" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 .5C5.73.5.98 5.24.98 11.5c0 5 3.24 9.24 7.75 10.74.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.15.68-3.82-1.34-3.82-1.34-.52-1.3-1.26-1.65-1.26-1.65-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.73 2.65 1.23 3.3.94.1-.73.4-1.23.72-1.51-2.51-.28-5.15-1.26-5.15-5.6 0-1.24.44-2.25 1.17-3.04-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.16a10.9 10.9 0 0 1 5.74 0c2.18-1.47 3.14-1.16 3.14-1.16.63 1.57.24 2.73.12 3.02.73.79 1.17 1.8 1.17 3.04 0 4.35-2.65 5.31-5.17 5.59.41.35.77 1.04.77 2.1 0 1.52-.01 2.75-.01 3.12 0 .3.2.66.79.55A10.52 10.52 0 0 0 23 11.5C23 5.24 18.27.5 12 .5Z" />
-              </svg>
-              View on GitHub
-            </a>
+            <div class="proj-title-group">
+              <div class="proj-title">Brain Tumor Prediction</div>
+              <div class="proj-subtitle">Deep Learning Diagnostic Classifier</div>
+            </div>
+            <p class="proj-desc">High-accuracy machine learning model to classify brain tumors from medical imaging data, covering the full pipeline from data preprocessing to multi-class diagnostic evaluation.</p>
+            <ul class="proj-features">
+              <li><span class="feat-icon">✦</span> Medical MRI &amp; Clinical Data Preprocessing</li>
+              <li><span class="feat-icon">✦</span> Deep Neural Network Training &amp; Evaluation</li>
+              <li><span class="feat-icon">✦</span> High-Accuracy Multi-Class Diagnosis</li>
+            </ul>
+            <div class="proj-tags">
+              <span class="proj-tag-pill">'Python'</span>
+              <span class="proj-tag-pill">'TensorFlow'</span>
+              <span class="proj-tag-pill">'Scikit-learn'</span>
+              <span class="proj-tag-pill">'Pandas'</span>
+              <span class="proj-tag-pill">'Deep Learning'</span>
+            </div>
           </div>
-        </div>
+        </a>
 
-        <div class="proj-card">
+        <!-- PROJECT 05: Emotion Detection System -->
+        <a class="proj-card" href="https://github.com/nrshousha/emotion-analysis" target="_blank" rel="noopener" data-category="nlp">
+          <div class="proj-card-header">
+            <div class="proj-number"><span class="proj-dot"></span> PROJECT 05</div>
+            <span class="proj-category">NLP &amp; Transformers</span>
+          </div>
           <div class="proj-image">
             <img src="project ss/emotion detector.png" alt="Emotion Detection System" loading="lazy" />
+            <span class="proj-ss-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="m21 15-5-5L5 21" />
+              </svg>
+              1 SCREENSHOT
+            </span>
           </div>
           <div class="proj-body">
-            <div class="proj-title">Emotion Detection System</div>
-            <div class="proj-desc">Text-based emotion classification model built by fine-tuning a DistilRoBERTa
-              transformer.</div>
-            <div class="proj-tech">Python · Transformers · DistilRoBERTa · NLP</div>
-            <a class="proj-link" href="https://github.com/nrshousha/emotion-analysis" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M12 .5C5.73.5.98 5.24.98 11.5c0 5 3.24 9.24 7.75 10.74.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.1-3.15.68-3.82-1.34-3.82-1.34-.52-1.3-1.26-1.65-1.26-1.65-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.73 2.65 1.23 3.3.94.1-.73.4-1.23.72-1.51-2.51-.28-5.15-1.26-5.15-5.6 0-1.24.44-2.25 1.17-3.04-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.16a10.9 10.9 0 0 1 5.74 0c2.18-1.47 3.14-1.16 3.14-1.16.63 1.57.24 2.73.12 3.02.73.79 1.17 1.8 1.17 3.04 0 4.35-2.65 5.31-5.17 5.59.41.35.77 1.04.77 2.1 0 1.52-.01 2.75-.01 3.12 0 .3.2.66.79.55A10.52 10.52 0 0 0 23 11.5C23 5.24 18.27.5 12 .5Z" />
-              </svg>
-              View on GitHub
-            </a>
+            <div class="proj-title-group">
+              <div class="proj-title">Emotion Detector</div>
+              <div class="proj-subtitle">Fine-Tuned Transformer Classifier</div>
+            </div>
+            <p class="proj-desc">Text-based emotion classification model built by fine-tuning a DistilRoBERTa transformer for nuanced multi-category affect recognition and sentiment analysis.</p>
+            <ul class="proj-features">
+              <li><span class="feat-icon">✦</span> Fine-Tuned DistilRoBERTa Architecture</li>
+              <li><span class="feat-icon">✦</span> Multi-Class Text Emotion Categorization</li>
+              <li><span class="feat-icon">✦</span> Optimized Tokenization &amp; Inference Pipeline</li>
+            </ul>
+            <div class="proj-tags">
+              <span class="proj-tag-pill">'Python'</span>
+              <span class="proj-tag-pill">'Transformers'</span>
+              <span class="proj-tag-pill">'DistilRoBERTa'</span>
+              <span class="proj-tag-pill">'PyTorch'</span>
+              <span class="proj-tag-pill">'NLP'</span>
+            </div>
           </div>
-        </div>
+        </a>
+
+        <!-- PROJECT 06: ReadNext -->
+        <a class="proj-card" href="https://github.com/nrshousha/ReadNext" target="_blank" rel="noopener" data-category="ml">
+          <div class="proj-card-header">
+            <div class="proj-number"><span class="proj-dot"></span> PROJECT 06</div>
+            <span class="proj-category">Recommendation Systems</span>
+          </div>
+          <div class="proj-image">
+            <img src="project ss/read next.png" alt="ReadNext — Book Recommendation System" loading="lazy" />
+            <span class="proj-ss-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="m21 15-5-5L5 21" />
+              </svg>
+              1 SCREENSHOT
+            </span>
+          </div>
+          <div class="proj-body">
+            <div class="proj-title-group">
+              <div class="proj-title">ReadNext</div>
+              <div class="proj-subtitle">AI Book Recommendation Engine</div>
+            </div>
+            <p class="proj-desc">Content-based book recommendation engine that suggests titles based on high-dimensional vector representations of user reading history and genre preferences.</p>
+            <ul class="proj-features">
+              <li><span class="feat-icon">✦</span> High-Dimensional Content-Based Filtering</li>
+              <li><span class="feat-icon">✦</span> Semantic Book Similarity Search</li>
+              <li><span class="feat-icon">✦</span> Personalized Reader Preference Engine</li>
+            </ul>
+            <div class="proj-tags">
+              <span class="proj-tag-pill">'Python'</span>
+              <span class="proj-tag-pill">'Scikit-learn'</span>
+              <span class="proj-tag-pill">'Pandas'</span>
+              <span class="proj-tag-pill">'Machine Learning'</span>
+              <span class="proj-tag-pill">'NLP'</span>
+            </div>
+          </div>
+        </a>
 
       </div>
     </div>
@@ -1399,6 +1663,24 @@
       });
     }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
     sections.forEach(s => s && observer.observe(s));
+
+    // project category filter tabs
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projCards = document.querySelectorAll('.proj-card');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        projCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
   </script>
 
 </body>
